@@ -74,6 +74,62 @@ class BasicDrawing {
     orange.addEventListener("click", () => {
       strokeColor = "orange";
     });
+    // specifying method for mobile devices
+    if (window.width < 1025) {
+      let draw = false;
+      let previousX = null;
+      let previousY = null;
+
+      window.addEventListener("touchstart", () => {
+        draw = true;
+      });
+      window.addEventListener("touchend", () => {
+        draw = false;
+      });
+      window.addEventListener("touchmove", (e) => {
+        if (previousX == null || previousY == null || !draw) {
+          previousX = e.x;
+          previousY = e.y;
+          return;
+        }
+        context = element.getContext("2d");
+        context.beginPath();
+        context.lineWidth = penSize;
+        context.strokeStyle = strokeColor;
+        context.moveTo(previousX, previousY);
+        context.lineTo(e.x, e.y);
+        context.stroke();
+        previousX = e.x;
+        previousY = e.y;
+      });
+      size1.addEventListener("click", () => {
+        penSize = 1;
+      });
+      size2.addEventListener("click", () => {
+        penSize = 2;
+      });
+      size3.addEventListener("click", () => {
+        penSize = 3;
+      });
+      black.addEventListener("click", () => {
+        strokeColor = "black";
+      });
+      red.addEventListener("click", () => {
+        strokeColor = "red";
+      });
+      blue.addEventListener("click", () => {
+        strokeColor = "blue";
+      });
+      green.addEventListener("click", () => {
+        strokeColor = "green";
+      });
+      yellow.addEventListener("click", () => {
+        strokeColor = "yellow";
+      });
+      orange.addEventListener("click", () => {
+        strokeColor = "orange";
+      });
+    }
   }
   // clear method
   clear(clearButton, element, context) {
