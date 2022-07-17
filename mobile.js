@@ -33,8 +33,8 @@ class BasicDrawing {
     });
     window.addEventListener("touchmove", (e) => {
       if (previousX == null || previousY == null || !draw) {
-        previousX = e.x;
-        previousY = e.y;
+        previousX = e.clientX;
+        previousY = e.clientY;
         return;
       }
       context = element.getContext("2d");
@@ -42,10 +42,10 @@ class BasicDrawing {
       context.lineWidth = penSize;
       context.strokeStyle = strokeColor;
       context.moveTo(previousX, previousY);
-      context.lineTo(e.x, e.y);
+      context.lineTo(e.clientX, e.clientY);
       context.stroke();
-      previousX = e.x;
-      previousY = e.y;
+      previousX = e.clientX;
+      previousY = e.clientY;
     });
     size1.addEventListener("click", () => {
       penSize = 1;
