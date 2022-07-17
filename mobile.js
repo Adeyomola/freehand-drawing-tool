@@ -25,13 +25,13 @@ class BasicDrawing {
     let previousX = null;
     let previousY = null;
 
-    window.addEventListener("touchstart", () => {
+    document.body.addEventListener("touchstart", () => {
       draw = true;
     });
-    window.addEventListener("touchend", () => {
+    document.body.addEventListener("touchend", () => {
       draw = false;
     });
-    window.addEventListener("touchmove", (e) => {
+    document.body.addEventListener("touchmove", (e) => {
       e.preventDefault();
       if (previousX == null || previousY == null || !draw) {
         previousX = e.clientX;
