@@ -32,6 +32,7 @@ class BasicDrawing {
       draw = false;
     });
     window.addEventListener("touchmove", (e) => {
+      e.preventDefault();
       if (previousX == null || previousY == null || !draw) {
         previousX = e.clientX;
         previousY = e.clientY;
