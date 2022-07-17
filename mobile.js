@@ -21,6 +21,35 @@ class BasicDrawing {
     strokeColor,
     context
   ) {
+    // prevents scrolling while you touch on the sreen
+    document.body.addEventListener(
+      "touchstart",
+      (e) => {
+        if (e.target.nodeName == "CANVAS") {
+          e.preventDefault();
+        }
+      },
+      false
+    );
+    document.body.addEventListener(
+      "touchend",
+      (e) => {
+        if (e.target.nodeName == "CANVAS") {
+          e.preventDefault();
+        }
+      },
+      false
+    );
+    document.body.addEventListener(
+      "touchmove",
+      (e) => {
+        if (e.target.nodeName == "CANVAS") {
+          e.preventDefault();
+        }
+      },
+      false
+    );
+
     let draw = false;
     let previousX = null;
     let previousY = null;
