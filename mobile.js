@@ -21,46 +21,26 @@ class BasicDrawing {
     strokeColor,
     context
   ) {
-    // prevents scrolling while you touch on the sreen
-    document.body.addEventListener(
-      "touchstart",
-      (e) => {
-        if (e.target.nodeName == "CANVAS") {
-          e.preventDefault();
-        }
-      },
-      false
-    );
-    document.body.addEventListener(
-      "touchend",
-      (e) => {
-        if (e.target.nodeName == "CANVAS") {
-          e.preventDefault();
-        }
-      },
-      false
-    );
-    document.body.addEventListener(
-      "touchmove",
-      (e) => {
-        if (e.target.nodeName == "CANVAS") {
-          e.preventDefault();
-        }
-      },
-      false
-    );
-
     let draw = false;
     let previousX = null;
     let previousY = null;
 
     document.body.addEventListener("pointerdown", (e) => {
+      if (e.target.nodeName == "CANVAS") {
+        e.preventDefault();
+      }
       draw = true;
     });
     document.body.addEventListener("pointerup", (e) => {
+      if (e.target.nodeName == "CANVAS") {
+        e.preventDefault();
+      }
       draw = false;
     });
     document.body.addEventListener("pointermove", (e) => {
+      if (e.target.nodeName == "CANVAS") {
+        e.preventDefault();
+      }
       if (previousX == null || previousY == null || !draw) {
         previousX = e.clientX;
         previousY = e.clientY;
