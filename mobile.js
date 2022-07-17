@@ -25,13 +25,27 @@ class BasicDrawing {
     let previousX = null;
     let previousY = null;
 
-    document.body.addEventListener("touchstart", () => {
-      draw = true;
-    });
-    document.body.addEventListener("touchend", () => {
+    document.body.addEventListener(
+      "touchstart",
+      (e) => {
+        if (e.target.nodeName == "CANVAS") {
+          e.preventDefault();
+        }
+        draw = true;
+      },
+      false
+    );
+    document.body.addEventListener("touchend", (e) => {
+      if (e.target.nodeName == "CANVAS") {
+        e.preventDefault();
+      }
       draw = false;
-    });
+    }),
+      false;
     document.body.addEventListener("touchmove", (e) => {
+      if (e.target.nodeName == "CANVAS") {
+        e.preventDefault();
+      }
       if (previousX == null || previousY == null || !draw) {
         previousX = e.clientX;
         previousY = e.clientY;
@@ -71,9 +85,13 @@ class BasicDrawing {
     yellow.addEventListener("click", () => {
       strokeColor = "yellow";
     });
-    orange.addEventListener("click", () => {
-      strokeColor = "orange";
-    });
+    orange.addEventListener(
+      "click",
+      () => {
+        strokeColor = "orange";
+      },
+      false
+    );
   }
   // clear method
   clear(clearButton, element, context) {
