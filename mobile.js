@@ -28,9 +28,8 @@ class BasicDrawing {
       //   previousY = e.offsetY;
       //   return;
       // }
-      let previousX = null;
-      let previousY = null;
-      
+      previousX = e.offsetX;
+      previousY = e.offsetY;
       context = element.getContext("2d");
       context.beginPath();
       context.lineWidth = penSize;
@@ -40,7 +39,6 @@ class BasicDrawing {
       context.stroke();
       previousX = e.offsetX;
       previousY = e.offsetY;
-      return;
     });
     size1.addEventListener("click", () => {
       penSize = 1;
