@@ -4,7 +4,7 @@ class BasicDrawing {
     this.element = element;
     element.height = document.documentElement.clientHeight;
     element.width = document.documentElement.clientWidth;
-    element.style = "touch-action:none;"; // keep the canvas from scrolling on touch
+    // element.style = "touch-action:none;"; // keep the canvas from scrolling on touch
   }
   // define methods
   freeHand(
