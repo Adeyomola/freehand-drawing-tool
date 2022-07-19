@@ -45,8 +45,9 @@ class BasicDrawing {
       context.moveTo(previousX, previousY);
       context.lineTo(e.clientX, e.clientY);
       context.stroke();
-      // previousX = e.clientX;
-      // previousY = e.clientY;
+      previousX = e.clientX;
+      previousY = e.clientY;
+      return;
     });
     size1.addEventListener("click", () => {
       penSize = 1;

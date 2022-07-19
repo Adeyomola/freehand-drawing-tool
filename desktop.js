@@ -46,6 +46,7 @@ class BasicDrawing {
       context.stroke();
       previousX = e.x;
       previousY = e.y;
+      return;
     });
     size1.addEventListener("click", () => {
       penSize = 1;
