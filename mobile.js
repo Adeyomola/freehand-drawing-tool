@@ -4,6 +4,7 @@ class BasicDrawing {
     this.element = element;
     element.height = document.documentElement.clientHeight;
     element.width = document.documentElement.clientWidth;
+    element.style = "touch-action:none;";
   }
   // define methods
   freeHand(
@@ -97,7 +98,6 @@ class BasicDrawing {
 
 // declaring element parameters for the BasicDrawing methods
 const main = document.getElementById("main");
-main.style = "touch-action:none;";
 const button = document.getElementById("button");
 const save = document.getElementById("save");
 const size1 = document.getElementById("size1");
