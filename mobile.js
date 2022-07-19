@@ -34,8 +34,8 @@ class BasicDrawing {
     });
     document.body.addEventListener("pointermove", (e) => {
       if (previousX == null || previousY == null || !draw) {
-        previousX = e.x;
-        previousY = e.y;
+        previousX = e.offsetX;
+        previousY = e.offsetY;
         return;
       }
       context = element.getContext("2d");
@@ -43,12 +43,12 @@ class BasicDrawing {
       context.lineWidth = penSize;
       context.strokeStyle = strokeColor;
       context.moveTo(previousX, previousY);
-      context.lineTo(e.x, e.y);
+      context.lineTo(e.offsetX, e.offsetY);
       context.stroke();
       previousX = null;
       previousY = null;
-      previousX = e.x;
-      previousY = e.y;
+      previousX = e.offsetX;
+      previousY = e.offsetY;
       return;
     });
     size1.addEventListener("click", () => {
