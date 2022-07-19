@@ -4,10 +4,11 @@ class BasicDrawing {
     this.element = element;
     element.height = document.documentElement.clientHeight;
     element.width = document.documentElement.clientWidth;
+    this.context = this.element.getContext("2d");
   }
 
   // define methods
-  freeHand(element, context) {
+  freeHand() {
     let draw = false;
     let previousX = null;
     let previousY = null;
@@ -24,13 +25,12 @@ class BasicDrawing {
         previousY = e.offsetY;
         return;
       }
-      context = element.getContext("2d");
-      context.beginPath();
-      context.lineWidth = penSize;
-      context.strokeStyle = strokeColor;
-      context.moveTo(previousX, previousY);
-      context.lineTo(e.offsetX, e.offsetY);
-      context.stroke();
+      this.context.beginPath();
+      this.context.lineWidth = penSize;
+      this.context.strokeStyle = strokeColor;
+      this.context.moveTo(previousX, previousY);
+      this.context.lineTo(e.offsetX, e.offsetY);
+      this.context.stroke();
       previousX = e.offsetX;
       previousY = e.offsetY;
     });
@@ -71,16 +71,15 @@ class BasicDrawing {
     });
   }
   // clear method
-  clear(clearButton, element, context) {
-    context = element.getContext("2d");
+  clear(clearButton) {
     clearButton.addEventListener("click", () => {
-      context.clearRect(0, 0, element.width, element.height);
+      this.context.clearRect(0, 0, this.element.width, this.element.height);
     });
   }
   // save method
-  save(saveButton, element) {
+  save(saveButton) {
     saveButton.addEventListener("click", () => {
-      let image = element.toDataURL("image/png", 1.0);
+      let image = this.element.toDataURL("image/png", 1.0);
       let link = document.createElement("a");
       link.href = image;
       link.download = "image.png";
@@ -110,9 +109,9 @@ let strokeColor;
 const basicDrawing = new BasicDrawing(main);
 
 // calling the BasicDrawing class methods on the basicDrawing instance/object
-basicDrawing.freeHand(main);
-basicDrawing.clear(button, main);
-basicDrawing.save(save, main);
+basicDrawing.freeHand();
+basicDrawing.clear(button);
+basicDrawing.save(save);
 basicDrawing.pen(size1, size2, size3);
 basicDrawing.penColor(
   blackButton,
