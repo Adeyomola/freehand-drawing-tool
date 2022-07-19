@@ -31,12 +31,11 @@ class BasicDrawing {
       context.moveTo(previousX, previousY);
       context.lineTo(e.offsetX, e.offsetY);
       context.stroke();
-      context.save();
-      context.restore();
       previousX = e.offsetX;
       previousY = e.offsetY;
     });
   }
+
   // PenSize method
   pen(size1, size2, size3) {
     size1.addEventListener("click", () => {
