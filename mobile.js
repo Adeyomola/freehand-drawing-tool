@@ -26,14 +26,14 @@ class BasicDrawing {
     let previousX = null;
     let previousY = null;
 
-    document.body.addEventListener("pointerdown", (e) => {
-      draw = true;
-    });
-    document.body.addEventListener("pointerup", (e) => {
-      draw = false;
-    });
+    // document.body.addEventListener("pointerdown", (e) => {
+    //   draw = true;
+    // });
+    // document.body.addEventListener("pointerup", (e) => {
+    //   draw = false;
+    // });
     document.body.addEventListener("pointermove", (e) => {
-      if (previousX == null || previousY == null || !draw) {
+      if (previousX == null || previousY == null) {
         previousX = e.offsetX;
         previousY = e.offsetY;
         return;
@@ -45,8 +45,6 @@ class BasicDrawing {
       context.moveTo(previousX, previousY);
       context.lineTo(e.offsetX, e.offsetY);
       context.stroke();
-      previousX = null;
-      previousY = null;
       previousX = e.offsetX;
       previousY = e.offsetY;
       return;

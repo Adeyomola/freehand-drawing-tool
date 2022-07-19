@@ -32,7 +32,6 @@ class BasicDrawing {
       draw = false;
     });
     window.addEventListener("mousemove", (e) => {
-      console.log(e)
       if (previousX == null || previousY == null || !draw) {
         previousX = e.offsetX;
         previousY = e.offsetY;
@@ -45,11 +44,8 @@ class BasicDrawing {
       context.moveTo(previousX, previousY);
       context.lineTo(e.offsetX, e.offsetY);
       context.stroke();
-      previousX = null;
-      previousY = null;
       previousX = e.offsetX;
       previousY = e.offsetY;
-      return;
     });
     size1.addEventListener("click", () => {
       penSize = 1;
