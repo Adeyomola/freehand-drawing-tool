@@ -25,49 +25,28 @@ class BasicDrawing {
     let previousX = null;
     let previousY = null;
 
-    document.body.addEventListener(
-      "pointerdown",
-      (e) => {
-        if (e.target.nodeName == "CANVAS") {
-          e.preventDefault();
-        }
-        draw = true;
-      },
-      false
-    );
-    document.body.addEventListener(
-      "pointerup",
-      (e) => {
-        if (e.target.nodeName == "CANVAS") {
-          e.preventDefault();
-        }
-        draw = false;
-      },
-      false
-    );
-    document.body.addEventListener(
-      "pointermove",
-      (e) => {
-        if (e.target.nodeName == "CANVAS") {
-          e.preventDefault();
-        }
-        if (previousX == null || previousY == null || !draw) {
-          previousX = e.clientX;
-          previousY = e.clientY;
-          return;
-        }
-        context = element.getContext("2d");
-        context.beginPath();
-        context.lineWidth = penSize;
-        context.strokeStyle = strokeColor;
-        context.moveTo(previousX, previousY);
-        context.lineTo(e.clientX, e.clientY);
-        context.stroke();
+    document.body.addEventListener("pointerdown", (e) => {
+      draw = true;
+    });
+    document.body.addEventListener("pointerup", (e) => {
+      draw = false;
+    });
+    document.body.addEventListener("pointermove", (e) => {
+      if (previousX == null || previousY == null || !draw) {
         previousX = e.clientX;
         previousY = e.clientY;
-      },
-      false
-    );
+        return;
+      }
+      context = element.getContext("2d");
+      context.beginPath();
+      context.lineWidth = penSize;
+      context.strokeStyle = strokeColor;
+      context.moveTo(previousX, previousY);
+      context.lineTo(e.clientX, e.clientY);
+      context.stroke();
+      previousX = e.clientX;
+      previousY = e.clientY;
+    });
     size1.addEventListener("click", () => {
       penSize = 1;
     });
@@ -118,6 +97,7 @@ class BasicDrawing {
 
 // declaring element parameters for the BasicDrawing methods
 const main = document.getElementById("main");
+main.style = "touch-action:none;";
 const button = document.getElementById("button");
 const save = document.getElementById("save");
 const size1 = document.getElementById("size1");
