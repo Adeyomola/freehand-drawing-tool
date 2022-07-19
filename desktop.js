@@ -44,6 +44,8 @@ class BasicDrawing {
       context.moveTo(previousX, previousY);
       context.lineTo(e.x, e.y);
       context.stroke();
+      previousX = null;
+      previousY = null;
       previousX = e.x;
       previousY = e.y;
       return;
