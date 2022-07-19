@@ -4,7 +4,7 @@ class BasicDrawing {
     this.element = element;
     element.height = document.documentElement.clientHeight;
     element.width = document.documentElement.clientWidth;
-    element.style = "touch-action:none;";
+    element.style = "touch-action:none;"; // keep the canvas from scrolling on touch
   }
   // define methods
   freeHand(
@@ -45,8 +45,8 @@ class BasicDrawing {
       context.moveTo(previousX, previousY);
       context.lineTo(e.clientX, e.clientY);
       context.stroke();
-      previousX = e.clientX;
-      previousY = e.clientY;
+      // previousX = e.clientX;
+      // previousY = e.clientY;
     });
     size1.addEventListener("click", () => {
       penSize = 1;
