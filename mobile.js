@@ -22,14 +22,15 @@ class BasicDrawing {
     strokeColor,
     context
   ) {
+    let previousX = null;
+    let previousY = null;
+
     document.body.addEventListener("pointermove", (e) => {
-      // if (previousX == null || previousY == null) {
-      //   previousX = e.offsetX;
-      //   previousY = e.offsetY;
-      //   return;
-      // }
-      previousX = e.offsetX;
-      previousY = e.offsetY;
+      if (previousX == null || previousY == null) {
+        previousX = e.offsetX;
+        previousY = e.offsetY;
+        return;
+      }
       context = element.getContext("2d");
       context.beginPath();
       context.lineWidth = penSize;
@@ -39,6 +40,10 @@ class BasicDrawing {
       context.stroke();
       previousX = e.offsetX;
       previousY = e.offsetY;
+      document.body.addEventListener("pointerup", () => {
+        previousX = null;
+        previousY = null;
+      });
     });
     size1.addEventListener("click", () => {
       penSize = 1;
