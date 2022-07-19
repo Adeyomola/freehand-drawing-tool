@@ -22,22 +22,15 @@ class BasicDrawing {
     strokeColor,
     context
   ) {
-    let draw = false;
-    let previousX = null;
-    let previousY = null;
-
-    // document.body.addEventListener("pointerdown", (e) => {
-    //   draw = true;
-    // });
-    // document.body.addEventListener("pointerup", (e) => {
-    //   draw = false;
-    // });
     document.body.addEventListener("pointermove", (e) => {
-      if (previousX == null || previousY == null) {
-        previousX = e.offsetX;
-        previousY = e.offsetY;
-        return;
-      }
+      // if (previousX == null || previousY == null) {
+      //   previousX = e.offsetX;
+      //   previousY = e.offsetY;
+      //   return;
+      // }
+      let previousX = null;
+      let previousY = null;
+      
       context = element.getContext("2d");
       context.beginPath();
       context.lineWidth = penSize;
