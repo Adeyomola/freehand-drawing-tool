@@ -1,26 +1,13 @@
 class BasicDrawing {
-  constructor(element, clearButton) {
+  constructor(element) {
     // canvas property;
     this.element = element;
     element.height = document.documentElement.clientHeight;
     element.width = document.documentElement.clientWidth;
   }
+
   // define methods
-  freeHand(
-    element,
-    size1,
-    size2,
-    size3,
-    black,
-    red,
-    green,
-    blue,
-    yellow,
-    orange,
-    penSize,
-    strokeColor,
-    context
-  ) {
+  freeHand(element, context) {
     let draw = false;
     let previousX = null;
     let previousY = null;
@@ -44,35 +31,44 @@ class BasicDrawing {
       context.moveTo(previousX, previousY);
       context.lineTo(e.offsetX, e.offsetY);
       context.stroke();
+      context.save();
+      context.restore();
       previousX = e.offsetX;
       previousY = e.offsetY;
     });
+  }
+  // PenSize method
+  pen(size1, size2, size3) {
     size1.addEventListener("click", () => {
-      penSize = 1;
+      return (penSize = 1);
     });
     size2.addEventListener("click", () => {
-      penSize = 2;
+      return (penSize = 2);
     });
     size3.addEventListener("click", () => {
-      penSize = 3;
+      return (penSize = 3);
     });
+  }
+
+  // Pen Color method
+  penColor(black, red, green, blue, yellow, orange) {
     black.addEventListener("click", () => {
-      strokeColor = "black";
+      return (strokeColor = "black");
     });
     red.addEventListener("click", () => {
-      strokeColor = "red";
+      return (strokeColor = "red");
     });
     blue.addEventListener("click", () => {
-      strokeColor = "blue";
+      return (strokeColor = "blue");
     });
     green.addEventListener("click", () => {
-      strokeColor = "green";
+      return (strokeColor = "green");
     });
     yellow.addEventListener("click", () => {
-      strokeColor = "yellow";
+      return (strokeColor = "yellow");
     });
     orange.addEventListener("click", () => {
-      strokeColor = "orange";
+      return (strokeColor = "orange");
     });
   }
   // clear method
@@ -90,7 +86,6 @@ class BasicDrawing {
       link.href = image;
       link.download = "image.png";
       link.click();
-      console.log(image);
     });
   }
 }
@@ -109,15 +104,18 @@ const yellowButton = document.getElementById("yellowButton");
 const greenButton = document.getElementById("greenButton");
 const orangeButton = document.getElementById("orangeButton");
 
+let penSize;
+let strokeColor;
+
 // declaring basicDrawing as an instance of the BasicDrawing class
 const basicDrawing = new BasicDrawing(main);
 
 // calling the BasicDrawing class methods on the basicDrawing instance/object
-basicDrawing.freeHand(
-  main,
-  size1,
-  size2,
-  size3,
+basicDrawing.freeHand(main);
+basicDrawing.clear(button, main);
+basicDrawing.save(save, main);
+basicDrawing.pen(size1, size2, size3);
+basicDrawing.penColor(
   blackButton,
   redButton,
   greenButton,
@@ -125,5 +123,3 @@ basicDrawing.freeHand(
   yellowButton,
   orangeButton
 );
-basicDrawing.clear(button, main);
-basicDrawing.save(save, main);

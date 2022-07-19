@@ -53,25 +53,25 @@ button:active {
 }
 
 #blackButton {
-    background-color: black;
+    border: 1px solid black;
 }
 
 #redButton {
-    background-color: red;
+    border: 1px solid red;
 }
 
 #blueButton {
-    background-color: blue;
+    border: 1px solid blue;
 }
 
 #greenButton {
-    background-color: green;
+    border: 1px solid green;
 }
 
 #yellowButton {
-    background-color: yellow;
+    border: 1px solid yellow;
 }
 
 #orangeButton {
-    background-color: orange;
+    border: 1px solid orange;
 }
