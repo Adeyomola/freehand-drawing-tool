@@ -99,6 +99,7 @@ const yellowButton = document.getElementById("yellowButton");
 const greenButton = document.getElementById("greenButton");
 const orangeButton = document.getElementById("orangeButton");
 
+// declare penSize and strokeColor variables; these variables are called and assigned a value when the pen method and penColor method are called
 let penSize;
 let strokeColor;
 
