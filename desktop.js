@@ -86,6 +86,15 @@ class BasicDrawing {
       link.click();
     });
   }
+
+  text(textbutton) {
+    textbutton.addEventListener("click", () => {
+      this.context.fillStyle = "skyblue";
+      this.context.font = "100px Quicksand";
+      this.context.fillText("V", 50, 50);
+      console.log("print");
+    });
+  }
 }
 
 // declaring element parameters for the BasicDrawing methods
@@ -95,6 +104,7 @@ const save = document.getElementById("save");
 const size1 = document.getElementById("size1");
 const size2 = document.getElementById("size2");
 const size3 = document.getElementById("size3");
+const text = document.getElementById("Text");
 const blackButton = document.getElementById("blackButton");
 const redButton = document.getElementById("redButton");
 const blueButton = document.getElementById("blueButton");
@@ -111,6 +121,7 @@ const basicDrawing = new BasicDrawing(main);
 
 // calling the BasicDrawing class methods on the basicDrawing instance/object
 basicDrawing.freeHand();
+basicDrawing.text(text);
 basicDrawing.clear(button);
 basicDrawing.save(save);
 basicDrawing.pen(size1, size2, size3);
