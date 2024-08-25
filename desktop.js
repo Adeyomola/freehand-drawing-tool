@@ -89,9 +89,9 @@ class BasicDrawing {
 
   text(textbutton) {
     textbutton.addEventListener("click", () => {
-      this.context.fillStyle = "burlywood";
-      this.context.font = "100px Montserrat";
-      this.context.fillText("Ss", 100, 80);
+      this.context.fillStyle = "#509056";
+      this.context.font = "100px Cabin";
+      this.context.fillText("S&M", 100, 80);
       console.log("print");
     });
   }
